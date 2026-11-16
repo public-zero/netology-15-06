@@ -1,0 +1,8 @@
+.git
+.env
+screenshots/
+README.md
+README_Homework.md
+__pycache__/
+*.pyc
+.venv/
