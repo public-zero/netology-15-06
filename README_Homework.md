@@ -41,3 +41,46 @@ https://github.com/public-zero/netology-15-06
 ![Запуск контейнера](screenshots/04_container_running.png)
 
 После проверки остановил и удалил тестовый контейнер.
+
+
+
+
+## Задача 3. Docker Compose
+
+Создал `compose.yaml` для запуска приложения FastAPI и базы данных MySQL.
+
+Через `include` подключил `proxy.yaml` с настройками Nginx и HAProxy.
+
+Настроил сеть `backend`:
+- `web` — 172.20.0.5
+- `db` — 172.20.0.10
+
+Пароли и настройки базы данных берутся из `.env`.
+
+![Конфигурация Docker Compose](screenshots/05_compose_yaml.png)
+
+Запустил проект командой:
+
+    docker compose up -d
+
+Все четыре контейнера успешно запустились.
+
+![Запущенные контейнеры](screenshots/06_compose_ps.png)
+
+Проверил работу приложения:
+
+    curl -L http://127.0.0.1:8090
+
+Приложение вернуло время запроса и IP-адрес.
+
+![Проверка HTTP-запроса](screenshots/07_curl_response.png)
+
+Подключился к MySQL, проверил базу `virtd` и таблицу `requests`. В таблице появились две записи о HTTP-запросах.
+
+![Проверка MySQL](screenshots/08_mysql_queries.png)
+
+Остановил проект командой:
+
+    docker compose down
+
+
