@@ -112,3 +112,29 @@ https://github.com/public-zero/netology-15-06
 ![Запросы MySQL](screenshots/12_mysql_cloud.png)
 
 
+
+## Задача 6. Извлечение Terraform из Docker-образа
+
+Скачал Docker-образ `hashicorp/terraform:latest`.
+
+С помощью Dive изучил слои образа и нашёл файл `/bin/terraform`.
+
+![Поиск Terraform через Dive](screenshots/13_dive_terraform.png)
+
+Сохранил образ в архив командой:
+
+    docker save -o terraform-image.tar hashicorp/terraform:latest
+
+![Сохранение Docker-образа](screenshots/15_docker_save.png)
+
+Извлёк файл `bin/terraform` из слоя Docker-образа в каталог `~/terraform-bin/`.
+
+Проверил работу программы командой:
+
+    ~/terraform-bin/bin/terraform version
+
+Terraform успешно запустился. Версия — 1.17.2.
+
+![Проверка Terraform](screenshots/14_terraform_extracted.png)
+
+
