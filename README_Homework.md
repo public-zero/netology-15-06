@@ -84,3 +84,31 @@ https://github.com/public-zero/netology-15-06
     docker compose down
 
 
+
+## Задача 4. Развёртывание в Yandex Cloud
+
+Создал виртуальную машину `netology-15-06` в Yandex Cloud с Ubuntu 22.04, 2 vCPU и 2 ГБ RAM.
+
+Подключился по SSH с помощью созданного ключа.
+
+![Виртуальная машина](screenshots/09_yandex_vm.png)
+
+Установил Docker и Docker Compose.
+
+Создал скрипт `deploy.sh`, который скачивает проект с GitHub в `/opt/netology-15-06` и запускает контейнеры через Docker Compose.
+
+![Скрипт развёртывания](screenshots/10_deploy_script.png)
+
+Запустил скрипт на облачной машине. Все четыре контейнера успешно запустились.
+
+Проверил доступность приложения через Check-Host по адресу `http://84.201.130.79:8090`.
+
+Проверка из разных стран показала успешные ответы HTTP 200 OK.
+
+![Проверка HTTP](screenshots/11_http_check.png)
+
+Подключился к MySQL на облачной машине и проверил таблицу `requests`. В таблице появились записи с IP-адресами внешних клиентов.
+
+![Запросы MySQL](screenshots/12_mysql_cloud.png)
+
+
